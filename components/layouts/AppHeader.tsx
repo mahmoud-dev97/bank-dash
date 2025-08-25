@@ -16,25 +16,40 @@ function AppHeader() {
       </h1>
       <Image
         src="/avatar.png"
-        alt="user"
+        alt="User profile"
         width={45}
         height={45}
         className="md:hidden"
+        aria-label="User profile"
       />
       <div className="hidden md:flex items-center gap-4">
         <Input
           placeholder="Search for something..."
           className="rounded-full h-[50px]"
         />
-        <Image src="/settings.png" alt="settings" width={50} height={50} />
         <Image
-          src="/notifications.png"
-          alt="notifications"
+          src="/settings.png"
+          alt="Settings"
           width={50}
           height={50}
+          aria-label="Settings"
+        />
+        <Image
+          src="/notifications.png"
+          alt="Notifications"
+          width={50}
+          height={50}
+          aria-label="Notifications"
         />
         <LogoutButton />
-        <Image src="/avatar.png" alt="user" width={60} height={60} />
+        <Image
+          src="/avatar.png"
+          alt="User profile"
+          width={60}
+          height={60}
+          className="rounded-full"
+          aria-label="User profile"
+        />
       </div>
     </header>
   );

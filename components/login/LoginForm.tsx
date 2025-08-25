@@ -4,12 +4,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Mail } from "lucide-react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import FormInput from "./FormInput";
 import PasswordInput from "./PasswordInput";
 
 export default function LoginForm() {
-  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<{
@@ -48,7 +46,7 @@ export default function LoginForm() {
 
       const result = await res.json();
       localStorage.setItem("accessToken", result.accessToken);
-      router.push("/");
+      window.location.href = "/dashboard";
     } catch (err) {
       setApiError(
         err instanceof Error ? err.message : "An unknown error occurred"

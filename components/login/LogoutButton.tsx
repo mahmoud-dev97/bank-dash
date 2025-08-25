@@ -1,16 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import React from "react";
 
 const LogoutButton = () => {
-  const router = useRouter();
-
   const handleLogout = () => {
     localStorage.clear();
-    router.push("/");
+    window.location.href = "/";
   };
 
   return (

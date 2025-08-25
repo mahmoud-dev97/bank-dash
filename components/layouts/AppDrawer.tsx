@@ -16,8 +16,12 @@ const AppDrawer: React.FC = () => {
   return (
     <div className="md:hidden flex items-center gap-3">
       <Drawer direction="left">
-        <DrawerTrigger className="p-2 border rounded-lg">
-          <Menu size={22} />
+        <DrawerTrigger
+          className="p-2 border rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          aria-label="Open navigation menu"
+        >
+          <Menu size={22} aria-hidden="true" />
+          <span className="sr-only">Open navigation menu</span>
         </DrawerTrigger>
 
         <DrawerContent>
@@ -39,15 +43,17 @@ const AppDrawer: React.FC = () => {
             <div className="flex gap-4">
               <Image
                 src="/settings.png"
-                alt="settings"
+                alt="Settings"
                 width={40}
                 height={40}
+                aria-label="Settings"
               />
               <Image
                 src="/notifications.png"
-                alt="notifications"
+                alt="Notifications"
                 width={40}
                 height={40}
+                aria-label="Notifications"
               />
               <LogoutButton />
             </div>

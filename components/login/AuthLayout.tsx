@@ -9,10 +9,12 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         <div className="max-w-md mx-auto w-full">
           <Image
             src="/logo.png"
-            alt="logo"
+            alt="Bank Dashboard Logo"
             width={183}
             height={36}
             className="absolute lg:top-20 lg:left-20 top-10"
+            priority
+            aria-label="Bank Dashboard"
           />
           {children}
         </div>
@@ -26,6 +28,8 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           fill
           className="object-cover object-center"
           priority
+          sizes="(max-width: 768px) 50vw, 100vw"
+          aria-hidden="true"
         />
       </div>
     </div>
