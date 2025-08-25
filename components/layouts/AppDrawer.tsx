@@ -44,15 +44,15 @@ const AppDrawer: React.FC = () => {
               <Image
                 src="/settings.png"
                 alt="Settings"
-                width={40}
-                height={40}
+                width={50}
+                height={50}
                 aria-label="Settings"
               />
               <Image
                 src="/notifications.png"
                 alt="Notifications"
-                width={40}
-                height={40}
+                width={50}
+                height={50}
                 aria-label="Notifications"
               />
               <LogoutButton />
