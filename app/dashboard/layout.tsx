@@ -1,7 +1,7 @@
-import MainLayout from "@/components/layouts/StandardLayout";
+import StandardLayout from "@/components/layouts/StandardLayout";
 
 function layout({ children }: { children: React.ReactNode }) {
-  return <MainLayout>{children}</MainLayout>;
+  return <StandardLayout>{children}</StandardLayout>;
 }
 
 export default layout;

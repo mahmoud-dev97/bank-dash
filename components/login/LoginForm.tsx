@@ -47,7 +47,7 @@ export default function LoginForm() {
       }
 
       const result = await res.json();
-      localStorage.setItem("token", result.accessToken);
+      localStorage.setItem("accessToken", result.accessToken);
       router.push("/");
     } catch (err) {
       setApiError(

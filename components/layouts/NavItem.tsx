@@ -25,6 +25,7 @@ const NavItem: React.FC<NavItemProps> = ({ item, sidebar }) => {
 
   return (
     <Link
+      rel="canonical"
       href={item.url}
       className={`${baseClasses} ${
         isActive ? "text-[#2D60FF]" : "text-[#B1B1B1]"
