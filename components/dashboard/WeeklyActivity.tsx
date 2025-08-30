@@ -4,7 +4,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { memo } from "react";
 import { BarChart, Bar, XAxis, YAxis } from "recharts";
 
 const weeklyData = [
@@ -68,4 +67,4 @@ function WeeklyActivity() {
     </div>
   );
 }
-export default memo(WeeklyActivity);
+export default WeeklyActivity;

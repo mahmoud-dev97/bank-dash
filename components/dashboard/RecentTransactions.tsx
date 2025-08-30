@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { memo } from "react";
 
 const recentTransactions = [
   {
@@ -71,4 +70,4 @@ function RecentTransactions() {
   );
 }
 
-export default memo(RecentTransactions);
+export default RecentTransactions;

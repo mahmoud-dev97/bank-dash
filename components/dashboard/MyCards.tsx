@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { memo } from "react";
 
 function MyCards() {
   return (
@@ -87,4 +86,4 @@ function MyCards() {
   );
 }
 
-export default memo(MyCards);
+export default MyCards;

@@ -6,16 +6,38 @@ export type Account = {
   email: string;
   company: { name: string };
 };
-export const useAccounts = () => {
+
+type UseAccountsReturn = {
+  data: Account[];
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+};
+
+export const useAccounts = (): UseAccountsReturn => {
   const [data, setData] = useState<Account[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const fetchAccounts = async () => {
+  const fetchAccounts = () => {
     setLoading(true);
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
-    const d = await res.json();
-    setData(d);
-    setLoading(false);
+    setError(null);
+
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Request failed with status ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((d) => {
+        setData(d);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message || "Something went wrong");
+        setLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -24,5 +46,5 @@ export const useAccounts = () => {
     }
   }, [data]);
 
-  return { data, loading };
+  return { data, loading, error, refetch: fetchAccounts };
 };

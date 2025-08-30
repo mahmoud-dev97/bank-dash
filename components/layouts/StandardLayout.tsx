@@ -1,11 +1,9 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppHeader from "./AppHeader";
 import { AppSidebar } from "./AppSidebar";
-import ProtectedRoute from "../auth/ProtectRoute";
 
 function StandardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ProtectedRoute>
       <SidebarProvider>
         <div className="flex min-h-screen w-full">
           <AppSidebar />
@@ -15,7 +13,6 @@ function StandardLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </SidebarProvider>
-    </ProtectedRoute>
   );
 }
 

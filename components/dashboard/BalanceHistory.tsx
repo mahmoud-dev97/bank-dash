@@ -4,7 +4,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { memo } from "react";
 import { AreaChart, Area, XAxis, YAxis } from "recharts";
 
 const balanceHistory = [
@@ -75,4 +74,4 @@ function BalanceHistory() {
   );
 }
 
-export default memo(BalanceHistory);
+export default BalanceHistory;

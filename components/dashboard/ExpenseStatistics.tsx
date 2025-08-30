@@ -1,18 +1,51 @@
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
-import { memo } from "react";
-import { PieChart, Pie, Cell } from "recharts";
 
-const expenseData = [
-  { name: "Entertainment", value: 30, color: "#8B5CF6" },
-  { name: "Bill Expenses", value: 15, color: "#F97316" },
-  { name: "Investment", value: 20, color: "#EC4899" },
-  { name: "Others", value: 35, color: "#3B82F6" },
+const data = [
+  { name: "Entertainment", value: 30, color: "#4A5568" },
+  { name: "Bill Expense", value: 15, color: "#FF8C00" },
+  { name: "Investment", value: 20, color: "#FF1493" },
+  { name: "Others", value: 35, color: "#0066FF" },
 ];
+
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  name,
+}: {
+  cx: number;
+  cy: number;
+  midAngle: number;
+  innerRadius: number;
+  outerRadius: number;
+  percent: number;
+  name: string;
+}) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor="middle"
+      dominantBaseline="central"
+      className="font-semibold text-sm"
+    >
+      <tspan x={x} dy="-0.3em">{`${(percent * 100).toFixed(0)}%`}</tspan>
+      <tspan x={x} dy="1.2em">
+        {name}
+      </tspan>
+    </text>
+  );
+};
 
 function ExpenseStatistics() {
   return (
@@ -20,56 +53,32 @@ function ExpenseStatistics() {
       <h2 className="text-base md:text-lg font-semibold text-gray-900 mb-4">
         Expense Statistics
       </h2>
-      <Card>
+      <Card className="w-full">
         <CardContent>
-          <ChartContainer
-            config={{
-              Entertainment: { label: "Entertainment", color: "#8B5CF6" },
-              "Bill Expenses": { label: "Bill Expenses", color: "#F97316" },
-              Investment: { label: "Investment", color: "#EC4899" },
-              Others: { label: "Others", color: "#3B82F6" },
-            }}
-            className="h-48 md:h-60 w-full"
-          >
-            <PieChart>
-              <Pie
-                data={expenseData}
-                cx="50%"
-                cy="50%"
-                innerRadius={40}
-                outerRadius={80}
-                dataKey="value"
-              >
-                {expenseData.map((entry, index) => (
-                  <Cell key={index} fill={entry.color} />
-                ))}
-              </Pie>
-              <ChartTooltip content={<ChartTooltipContent />} />
-            </PieChart>
-          </ChartContainer>
-
-          <div className="space-y-2 mt-4">
-            {expenseData.map((item, index) => (
-              <div key={index} className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <div
-                    className="w-3 h-3 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: item.color }}
-                  />
-                  <span className="text-xs md:text-sm text-gray-600 truncate">
-                    {item.name}
-                  </span>
-                </div>
-                <span className="text-xs md:text-sm font-medium flex-shrink-0">
-                  {item.value}%
-                </span>
-              </div>
-            ))}
+          <div className="h-90 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={data}
+                  cx="50%"
+                  cy="50%"
+                  labelLine={false}
+                  label={renderCustomizedLabel}
+                  outerRadius={180}
+                  fill="#8884d8"
+                  dataKey="value"
+                  paddingAngle={1}
+                >
+                  {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
           </div>
         </CardContent>
       </Card>
     </div>
   );
 }
-
-export default memo(ExpenseStatistics);
+export default ExpenseStatistics;

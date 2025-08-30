@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ProtectLogin from "@/components/auth/ProtectLogin";
+import ProtectRoute from "@/components/auth/ProtectRoute";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable}`}>
       <body className="antialiased bg-[#F5F7FA] min-h-screen w-full">
-        <ProtectLogin>{children}</ProtectLogin>
+        <ProtectRoute>{children}</ProtectRoute>
       </body>
     </html>
   );

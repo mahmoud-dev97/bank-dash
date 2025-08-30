@@ -3,7 +3,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Send, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { memo } from "react";
 
 const quickTransferUsers = [
   { name: "Livia Bator", role: "CEO", avatar: "/avatar.png" },
@@ -65,4 +64,4 @@ function QuickTransfer() {
   );
 }
 
-export default memo(QuickTransfer);
+export default QuickTransfer;
